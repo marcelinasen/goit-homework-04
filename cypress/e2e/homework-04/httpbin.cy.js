@@ -109,7 +109,7 @@ describe('7 - GET - httpbin response and data', () => {
 describe('8 - POST - httpbin with Body', () => {
     const bodyRequest = {
         userName: "Marcelina Tester"
-    }
+    };
 
     const request = {
         method: 'POST',
@@ -168,7 +168,7 @@ describe('10 - GET - API User Agent', () => {
         failOnStatusCode: false
     };
 
-    it('11 - response and user agent should be 200', () => {
+    it('response and user agent should be 200', () => {
         cy.request(request).then(response => {
             const currentStatus = response.status;
             const expectedStatus = 200;
@@ -183,31 +183,31 @@ describe('10 - GET - API User Agent', () => {
     });
 });
 
-describe('GET - Test API Random Data', () => {
+describe('11 - GET - Test API Random Data', () => {
     function getRandomInt(max) {
         return Math.floor(Math.random() * max)
-    }
+    };
 
     const requestDuration = {
         method: 'GET',
         url: 'https://httpbin.org/',
         failOnStatusCode: false
-    }
+    };
 
     it('random data ', () => {
-        for (let index = 0; index < 5; index++) {
+        for (let i = 0; i < 8; i++) {
             const randomId = getRandomInt(1000)
 
             const requestRandom = {
                 method: 'GET',
                 url: 'https://httpbin.org/get',
                 failOnStatusCode: false
-            }
+            };
 
             cy.request(requestRandom).then(response => {
                 assert.equal(200, response.status);
                 cy.log(response.body)
             });
-        }
+        };
     });
 });
